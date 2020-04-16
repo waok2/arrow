@@ -1,0 +1,99 @@
+{%  extends 'main.html'  %}
+
+{% block content %}
+
+<h3>Client Registration Form</h3>
+
+{% include "client/clientnav.html" %}
+
+<h6>{{ error }}</h6>
+
+
+
+<form method="POST" enctype="multipart/form-data" action="{% url 'register' %}" name="register_client"> 
+    {% csrf_token %}
+
+    <h4>Please enter Client details</h4>
+    <table>
+        <tr>
+            <td>
+                Surname :
+            </td>
+            <td>
+                <input type="text" name="surname"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Other Names :
+            </td>
+            <td>
+                <input type="text" name="other_names"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                National ID:
+            </td>
+            <td>
+                <input type="text" name="national_id"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Cell Number :
+            </td>
+            <td>
+                <input type="text" name="cell_number"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Branch :
+            </td>
+            <td>
+                <input type="text" name="branch"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Business Area:
+            </td>
+            <td>
+                <input type="text" name="business_area"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Occupation :
+            </td>
+            <td>
+                <input type="text" name="occupation"/>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Status:
+            </td>
+            <td>
+                
+                <select name="status">
+                    <option value="active">Active</option>
+                    <option value="dormant">Dormant</option>
+                </select>
+        
+            </td>
+        </tr>
+        <tr>
+            <td>
+            <input type="submit" value="Submit">
+            </td>
+            <td>
+                
+            </td>
+        </tr>
+    </table>
+    
+</form>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{%  extends 'main.html'  %}
+
+
+
+{% block content %}
+
+
+
+<h3>New Payment Form</h3>
+{% include "transact/paynav.html" %}
+
+{{  error  }}
+
+<form method="POST" enctype="multipart/form-data" action="{% url 'newpay' %}" name="newpay">
+    {% csrf_token %}
+
+    <h4>Please Enter Loan Details</h4>
+    <table>
+        <tr>
+            <td>
+                Loan ID :
+            </td>
+            <td>
+                <select name="loan_id">
+                    <option value="">--------</option>
+                    {% for loan in loans.all %}
+                    <option value="{{ loan.pk }}">{{ loan.client_id }}, amount -  KSH {{ loan.amount }}</option>
+                    {% endfor %}
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Amount :
+            </td>
+            <td>
+                <input type="text" name="amount" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Cycle :
+            </td>
+            <td>
+                <input type="text" name="cycles" />
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Mode :
+            </td>
+            <td>
+                <select name="mode_of_payment">
+                    <option value="cash">Cash</option>
+                    <option value="mpesa">Mpesa</option>
+                </select>
+            </td>
+        </tr>
+       
+        <tr>
+            <td>
+                <input type="submit" value="Submit">
+            </td>
+            <td>
+        
+            </td>
+        </tr>
+
+       
+    </table>
+
+</form>
+
+{% endblock %}
