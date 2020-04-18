@@ -5,11 +5,11 @@ services:
         build:
             context: .
         ports:
-            - "90801:90801"
+            - "9080:9080"
         volumes:
             - ./MFA-Project:/MFA-Project
         command: >
-              sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:90801"
+              sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:9080"
         environment:
             - DB_HOST=db
             - DB_NAME=app
